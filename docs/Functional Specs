@@ -1,0 +1,81 @@
+Background. The problem being addressed. 
+
+Visualization for flux in a reaction  
+
+Colors for different species and to visualize flux 
+
+Thickness of the bar also represents flux of a reaction  
+
+User profile. Who uses the system. what they know about the domain and computing (e.g., can browse the web, can program in Python) 
+
+Tellurium users who are trying to visualize fluxes in a reaction 
+
+Python programmers  
+
+Use cases. Describe at least two use cases. For each, describe: (a) the objective of the user interaction (e.g., withdraw m 
+
+After the user writes their tellurium model and loads into roadrunner, they can run a simulation and then they can visualize the simulation with the species concentrations and fluxes 
+
+They can set colors for their species and watch how the colors change corresponding to the flux  
+
+Import sbVisualizer   
+
+# data type returned 
+
+# data types of arguments  
+
+r.loada(“model”) 
+
+#Data = r.simulate() 
+
+r.steadyState() 
+
+# sbVisualizer calculates the steady state 
+
+Sbv = sbVisualizer.load(r.getSBML) 
+
+Sb.draw() 
+
+Sb.showFluxes()  # draw and show the fluxes as widths of reactions  
+
+Need roadrunner  
+
+Load model into roadrunner 
+
+Compute steady state and get fluxes r.getReactionRates()  
+
+r.getFluxReactionIds()  
+
+Sbv.show(CC)  
+
+Comment it well 
+
+Couple of functions  
+
+Need to know the name of the flux to change the color of it  
+
+Users pick the color scheme potentially  
+
+Scaling the numbers so the colors look decent  
+
+Decide on a maximum thickness  
+
+Scale down from there  
+
+RGB: 0 – 255  
+
+Hexadecimal – base 16  
+
+FF = 255  
+
+00 = 0  
+
+Hex(255) - converts decimal number into hex  
+
+Color blending between RGB  
+
+Autolayout 
+
+ 
+
+ 
