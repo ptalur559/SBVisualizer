@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Dec  3 15:59:44 2024
+
+@author: priyanka
+"""
+
 # How to test plots
 # have the plot function return data
 # ex. histogram function in numpy that returns arrays
@@ -12,7 +20,6 @@
 # Get the fluxes of all the species
 # Set the line thickness of one of the fluxes
   # the other ones scale to that one
-import SBMLDiagrams
 class Visualizer:
   # Initializer
   # Attributes: r
@@ -39,8 +46,9 @@ class Visualizer:
     fluxes = {rxn: rate for rxn, rate in zip(reaction_ids, rxn_rates)}
     return fluxes
 
-  def set_line_thickness(self, rxn_name:str, thickness):
+  def set_line_thickness(self, rxn_name, thickness):
     # User picks a species flux to change the line width of
+    # ask how to deal with user input
     # scales all the other fluxes
     # proportionality constant
     # returns a dict of all line thicknesses for each species
@@ -51,49 +59,49 @@ class Visualizer:
       self.line_thickness[rxn] = fluxes[rxn] * prop_constant
     return self.line_thickness
 
-#   def set_colors(self, species, color) -> dict:
-#     # User sets colors for each species
-#     # Need to figure out how to do the color gradient
-#     self.colors[species] = color
+  def set_colors(self, species, color) -> dict:
+    # User sets colors for each species
+    # Need to figure out how to do the color gradient
+    self.colors[species] = color
 
   def autolayout(self):
     self.df.autolayout()
     self.update_lines()
 
-#   def draw(self):
-#     self.figure, self.ax = plt.subplots()
+  def draw(self):
+    self.figure, self.ax = plt.subplots()
 
 
-#     # Drawing the species as circles
-#     for species in self.df.getSpecies():
-#       species_id = species.getIdentifier()
-#       x, y = positions[species_id]
-#       self.ax.plot(x, y, 'o', label=species_id)
-#       self.ax.text(x, y, species_id, ha='center', color='black')
+    # Drawing the species as circles
+    for species in self.df.getSpecies():
+      species_id = species.getIdentifier()
+      x, y = positions[species_id]
+      self.ax.plot(x, y, 'o', label=species_id)
+      self.ax.text(x, y, species_id, ha='center', color='black')
 
-#     # Drawing the rxn arrows
-#     for rxn in self.df.getReactions():
-#       rxn_id = rxn.getIdentifier()
-#       reactants = rxn.getReactants()
-#       products = rxn.getProducts()
+    # Drawing the rxn arrows
+    for rxn in self.df.getReactions():
+      rxn_id = rxn.getIdentifier()
+      reactants = rxn.getReactants()
+      products = rxn.getProducts()
 
-#       for reactant in reactants:
-#         reaction_id = reactant.getSpecies()
-#         rx, ry = positions[reaction_id]
+      for reactant in reactants:
+        reaction_id = reactant.getSpecies()
+        rx, ry = positions[reaction_id]
 
-#         for product in products:
-#           product_id = product.getSpecies()
-#           px, py = positions[product_id]
+        for product in products:
+          product_id = product.getSpecies()
+          px, py = positions[product_id]
 
-#           line_width = self.line_thickness.get(rxn_id, 1)  # Default to 1 if not set
-#           color = self.colors.get(rxn_id, "blue")
+          line_width = self.line_thickness.get(rxn_id, 1)  # Default to 1 if not set
+          color = self.colors.get(rxn_id, "blue")
 
-#           self.ax.annotate("",
-#                     xy=(px, py), xycoords='data',
-#                     xytext=(rx, ry), textcoords='data',
-#                     arrowprops=dict(arrowstyle="->", color="blue", lw=line_width))
+          self.ax.annotate("",
+                    xy=(px, py), xycoords='data',
+                    xytext=(rx, ry), textcoords='data',
+                    arrowprops=dict(arrowstyle="->", color="blue", lw=line_width))
 
-#     plt.show()
+    plt.show()
 
 
   def update_lines(self):
@@ -130,20 +138,18 @@ class Visualizer:
       colors_dict[flux] = rgb_vector
     return colors_dict
 
-  def extract_rgb_values(self, rxn_name: str):
-    """
-    Extracts the RGB values for a single reaction from a color gradient.
-    Args:
-        rxn_name (str): The name of the reaction to extract RGB values for.
-    Returns:
-        tuple: A tuple containing the (red, green, blue) values for the specified reaction.
-    """
-    colors_dict = self.make_color_gradient()  
-    if rxn_name not in colors_dict:
-        raise ValueError(f"Reaction '{rxn_name}' not found in the color gradient.")   
-    red_character, green_character, blue_character = colors_dict[rxn_name]
+  def extract_rgb_values(self):
+    colors_dict = self.make_color_gradient()
+    red_character = 0
+    green_character = 0
+    blue_character = 0
+    for color in colors_dict.values():
+      red_character += color[0]
+      green_character += color[1]
+      blue_character += color[2]
     return red_character, green_character, blue_character
   
+  # How to draw this properly? 
   def rgb_to_hex(self):
     r, g, b = self.extract_rgb_values()
     if any(not (0 <= val <= 255) for val in (r, g, b)):
