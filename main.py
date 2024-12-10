@@ -16,3 +16,5 @@ print(visualizer.set_line_thickness('J1', 50))
 print(visualizer.make_color_gradient())
 print(visualizer.extract_rgb_values())
 
+
+
