@@ -15,7 +15,8 @@ Install the package with:
 
 1. Write the Antimony model and load it into tellurium
 
-`r = te.loada('''
+```python
+r = te.loada('''
     // Reactions
     J1: A -> B; k1*A;
     J2: B -> C; k2*B;
@@ -28,4 +29,4 @@ Install the package with:
     // Parameters
     k1 = 0.5;
     k2 = 0.3;
-'''`
+''')
