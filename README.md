@@ -61,3 +61,5 @@ Finally, you can draw the diagram (scaling it if needed) and see it in a file.
 output_file_name = 'model_output.png'
 visualizer.draw(output_fileName=output_file_name, scale=500, k=60)
 ```
+<img width="294" alt="Screenshot 2024-12-10 at 6 34 58 PM" src="https://github.com/user-attachments/assets/4f27a8ef-c909-405e-86bf-c93c3a3fa3b4">
+
