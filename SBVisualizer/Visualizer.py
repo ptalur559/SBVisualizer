@@ -124,7 +124,7 @@ class Visualizer:
     Returns:
         tuple: A tuple containing the (red, green, blue) values for the specified reaction.
     """
-    colors_dict = self.make_color_gradient()  
+    colors_dict = self.get_color_gradient()  
     if rxn_name not in colors_dict:
         raise ValueError(f"Reaction '{rxn_name}' not found in the color gradient.")   
     return colors_dict[rxn_name]
