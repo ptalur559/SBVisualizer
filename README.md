@@ -65,3 +65,6 @@ visualizer.draw(output_fileName=output_file_name, scale=500, k=60)
 ```
 <img width="294" alt="Screenshot 2024-12-10 at 6 34 58 PM" src="https://github.com/user-attachments/assets/4f27a8ef-c909-405e-86bf-c93c3a3fa3b4">
 
+# Additional Notes
+
+SBMLDiagrams is no longer supported, so there are some errors with changing the border color of the arrow. When the thickness is too big, the border hides the inside color of the arrow head, and therefore, the set color is not visible. Future work on this issue can include using `sbmlnetworks` with Spyder. 
