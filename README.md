@@ -5,11 +5,27 @@ Systems Biology Markup Language, or SBML, is a software model for biological rea
 # Installation
 ## Prerequisites - have these installed
 
-  1. tellurium
-  2. SBMLDiagrams
+1. tellurium
+2. SBMLDiagrams
      
 Install the package with:
 `pip install SBVisualizer`
 
 # How to Use 
 
+1. Write the Antimony model and load it into tellurium
+
+`r = te.loada('''
+    // Reactions
+    J1: A -> B; k1*A;
+    J2: B -> C; k2*B;
+
+    // Initial conditions
+    A = 10;
+    B = 2;
+    C = 5;
+
+    // Parameters
+    k1 = 0.5;
+    k2 = 0.3;
+'''`
