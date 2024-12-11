@@ -13,7 +13,13 @@ Install the package with:
 
 # How to Use 
 
-1. Write the Antimony model and load it into tellurium
+Make sure you have these imports
+```python
+import tellurium as te
+import SBMLDiagrams as sb
+from SBVisualizer.Visualizer import Visualizer 
+
+Write the Antimony model and load it into tellurium
 
 ```python
 r = te.loada('''
@@ -30,3 +36,5 @@ r = te.loada('''
     k1 = 0.5;
     k2 = 0.3;
 ''')
+
+
