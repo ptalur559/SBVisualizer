@@ -5,4 +5,4 @@ SBVisualizer is a Python package for visualizing flux in SBML (Systems Biology M
 ## Installation
 
 Install the package with:
-
+pip install SBVisualizer
