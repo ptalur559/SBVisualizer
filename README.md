@@ -38,4 +38,26 @@ r = te.loada('''
     k2 = 0.3;
 ''')
 ```
+Create the Visualizer object. From that, you can load into SBMLDiagrams, get reaction fluxes, line thicknesses, colors, and then set them, which will change them in SBML Diagrams. 
 
+```python
+visualizer = Visualizer(r)
+# Load the SBML model
+visualizer.loadIntoSBML()
+# Get and print the fluxes
+fluxes = visualizer.get_fluxes()
+print("Fluxes:", fluxes)
+# Set the line thickness based on fluxes
+line_thicknesses = visualizer.get_line_thickness()
+print("Line thicknesses:", line_thicknesses)
+# Set the line thickness in the SBML model
+visualizer.set_line_thickness(line_thicknesses)
+# Set the colors based on fluxes
+visualizer.set_colors()
+```
+Finally, you can draw the diagram (scaling it if needed) and see it in a file. 
+
+```python
+output_file_name = 'model_output.png'
+visualizer.draw(output_fileName=output_file_name, scale=500, k=60)
+```
