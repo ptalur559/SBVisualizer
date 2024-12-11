@@ -11,6 +11,8 @@ Systems Biology Markup Language, or SBML, is a software model for biological rea
 Install the package with:
 `pip install SBVisualizer`
 
+Most current version = 0.1.3
+
 # How to Use 
 
 Make sure you have these imports
